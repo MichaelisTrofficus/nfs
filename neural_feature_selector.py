@@ -67,8 +67,8 @@ def nfs(inputs, input_shape, n_output_filters):
         A new MTS after Neural Feature Selector is applied. This MTS will be the output for
         other architectures: LSTM, Resnet, ...
     """
-    n, m = input_shape
+    _, m = input_shape
 
-    x = tcnn_layer(inputs, n)
+    x = tcnn_layer(inputs, m)
     x = BatchNormalization()(x)
     return aggregating_cnn(x, n_filters=n_output_filters)
